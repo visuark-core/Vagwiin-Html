@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog • Designing Delightful Web Experiences</title>
+  <meta name="description" content="A beautiful, animated blog page built with Tailwind CSS and vanilla JavaScript." />
+
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config (optional theme tweaks)
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'],
+          },
+          colors: {
+            brand: {
+              50: '#f5f8ff', 100: '#e9f0ff', 200: '#d3e1ff', 300: '#b0c7ff', 400: '#86a6ff',
+              500: '#5b82ff', 600: '#3d64f0', 700: '#2f4cc4', 800: '#263e9b', 900: '#1f357d'
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,0.08)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Preload fonts (optional system stack used) -->
+  <style>
+    /* Keyframes for subtle fade/slide animations */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0);} }
+    @keyframes floaty { 0% { transform: translateY(0);} 50% { transform: translateY(-6px);} 100% { transform: translateY(0);} }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .backdrop-grid { background-image: radial-gradient(circle at 1px 1px, rgba(99,102,241,.25) 1px, transparent 1px); background-size: 22px 22px; }
+  </style>
+</head>
+
+<body class="font-sans bg-white text-gray-800">
+  <!-- Reading Progress Bar -->
+  <div id="progress" class="fixed top-0 left-0 h-1 bg-brand-600 z-50 w-0"></div>
+
+  <!-- Navigation -->
+<header class="w-full shadow-sm bg-white sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex flex-wrap md:flex-nowrap justify-between items-center px-4 sm:px-6 py-4">
+    <!-- Logo -->
+    <div class="flex items-center w-full md:w-auto justify-between">
+      <img src="img/logo.png" alt="Vagwiin Logo" class="h-10 w-auto md:h-12">
+      <!-- Hamburger Button (Mobile) -->
+      <button id="menu-btn" class="md:hidden text-blue-700 focus:outline-none ml-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <!-- Desktop Nav -->
+    <nav class="space-x-4 sm:space-x-6 hidden md:flex flex-1 justify-center">
+      <a href="/index.html" class="hover:text-blue-600">Home</a>
+      <a href="/about.html" class="hover:text-blue-600">About</a>
+      <a href="/blog.html" class="text-blue-600 font-semibold">Blog</a>
+      <a href="/services.html" class="hover:text-blue-600">Services</a>
+      <a href="/jobs.html" class="hover:text-blue-600">All Jobs</a>
+    </nav>
+    <!-- Contact Button (Desktop) -->
+    <a href="/contact.html" class="hidden md:inline-block ml-0 md:ml-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition whitespace-nowrap">
+      Contact Us
+    </a>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden px-4 sm:px-6 pb-4 space-y-2 bg-white border-t w-full">
+    <a href="/index.html" class="block hover:text-blue-600">Home</a>
+    <a href="/about.html" class="block text-blue-600 font-semibold">About</a>
+    <a href="/blog.html" class="block hover:text-blue-600">Blog</a>
+    <a href="/services.html" class="block hover:text-blue-600">Services</a>
+    <a href="/jobs.html" class="block hover:text-blue-600">All Jobs</a>
+    <a href="/contact.html" class="block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+      Contact Us
+    </a>
+  </div>
+</header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-blue-700 via-blue-400 to-blue-200">
+    <div class="absolute inset-0 backdrop-grid pointer-events-none opacity-40"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-10 md:pt-14 md:pb-16 lg:pb-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 text-white">
+          <span class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold bg-yellow-300 text-blue-900 border-2 border-yellow-400 shadow-lg">
+            <svg class="w-5 h-5 mr-1 text-blue-700" fill="currentColor" viewBox="0 0 20 20"><path d="M13 7H7v6h6V7z"/><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-3-9a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H8a1 1 0 01-1-1V9z" clip-rule="evenodd"/></svg>
+            Trending: Tech Startups 2025
+          </span>
+          <h1 class="mt-6 text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight drop-shadow-lg">
+            Rising Tech Startups: <span class="text-yellow-300">Disrupting Industries & Shaping the Future</span>
+          </h1>
+          <p class="mt-6 text-lg sm:text-2xl font-semibold text-blue-100 max-w-2xl drop-shadow">
+            How startups are transforming industries, solving global challenges, and building the future in 2025.
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQHZOm-1zQkN0w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1728660253334?e=2147483647&v=beta&t=rdpNQZt3HDb_Mksn5mN8aBAmCjOWA0VyohqZw17_Nbc" alt="Author" class="w-12 h-12 rounded-full object-cover ring-4 ring-yellow-300 shadow-lg"/>
+            <div class="text-base font-bold text-yellow-100">
+              Neeraj Kumhar
+              <div class="text-sm font-normal text-blue-200">Aug 16, 2025</div>
+            </div>
+            <span class="mx-2 text-blue-200 text-xl">•</span>
+            <div class="flex gap-2 text-xs">
+              <span class="px-3 py-1 rounded-full bg-yellow-300 text-blue-900 font-bold shadow">#Startups</span>
+              <span class="px-3 py-1 rounded-full bg-yellow-300 text-blue-900 font-bold shadow">#Tech</span>
+              <span class="px-3 py-1 rounded-full bg-yellow-300 text-blue-900 font-bold shadow">#Innovation</span>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-5 mt-10 lg:mt-0">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-yellow-300">
+            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1200&q=80" alt="Tech Startups" class="w-full h-56 sm:h-72 md:h-80 lg:h-[380px] object-cover object-center scale-105 hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/40 via-transparent to-yellow-200/30 mix-blend-multiply"></div>
+            <span class="absolute top-3 right-3 text-xs px-3 py-1 rounded-full bg-yellow-300 text-blue-900 font-bold shadow">Feature</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main -->
+  <main id="article" class="relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-10">
+      <!-- Content -->
+
+  <article class="lg:col-span-8 prose prose-gray max-w-none">
+    <h1 class="reveal text-4xl font-extrabold text-blue-700 mb-4">Rising Tech Startups: Disrupting Industries and Shaping the Future</h1>
+    <p class="reveal text-lg font-semibold text-blue-900">In the fast-moving world of technology, startups have always been the pioneers of bold ideas and daring innovations. As we move through 2025, a new wave of rising tech startups is making headlines, not just for their unique business models, but for the way they’re transforming industries, solving global challenges, and reshaping the future.</p>
+
+    <div class="my-8 rounded-2xl bg-yellow-100 border-l-8 border-yellow-400 p-6 shadow-lg">
+      <p class="text-lg font-bold text-blue-800 mb-2">Key Takeaway</p>
+      <p class="text-blue-700">The story of rising tech startups is one of creativity, resilience, and disruption. In 2025, these companies are not just surviving—they’re redefining industries and building the future. Whether it’s through AI, fintech, healthtech, or sustainability, their innovations are shaping a world that is smarter, faster, and more connected than ever before.</p>
+    </div>
+
+    <h2 class="reveal text-2xl font-bold text-blue-700 mt-10">1. Startups Driving AI and Automation</h2>
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="AI Automation" class="rounded-xl shadow-lg my-4 w-full object-cover max-h-72">
+    <p class="reveal">Artificial Intelligence (AI) continues to dominate the tech scene, and startups are leveraging it in creative ways. From AI-powered customer service chatbots to predictive healthcare analytics, small companies are proving that innovation isn’t just for giants like Google or Microsoft. Startups are experimenting with generative AI, automation platforms, and AI assistants for professionals, making complex tools more accessible to everyday users.</p>
+
+    <h2 class="reveal text-2xl font-bold text-blue-700 mt-10">2. HealthTech Startups Transforming Healthcare</h2>
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="HealthTech" class="rounded-xl shadow-lg my-4 w-full object-cover max-h-72">
+    <p class="reveal">Healthcare is experiencing a massive shift with startups at the helm. Companies are working on telemedicine platforms, wearable health monitors, and even AI-based disease detection systems that can diagnose illnesses faster than traditional methods. These startups are not only improving patient outcomes but also reducing costs, making healthcare more accessible for all.</p>
+
+    <h2 class="reveal text-2xl font-bold text-blue-700 mt-10">3. FinTech Startups Changing the Money Game</h2>
+    <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b43?auto=format&fit=crop&w=800&q=80" alt="FinTech" class="rounded-xl shadow-lg my-4 w-full object-cover max-h-72">
+    <p class="reveal">Financial technology remains one of the hottest sectors. Startups are developing blockchain-based payment solutions, peer-to-peer lending platforms, and digital wallets that are helping the unbanked gain access to modern financial services. Some startups are even focusing on green fintech, creating platforms that let users track the environmental impact of their investments.</p>
+
+    <h2 class="reveal text-2xl font-bold text-blue-700 mt-10">4. ClimateTech and Sustainability Startups</h2>
+    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80" alt="ClimateTech" class="rounded-xl shadow-lg my-4 w-full object-cover max-h-72">
+    <p class="reveal">The global focus on climate change has given birth to a new wave of ClimateTech startups. These companies are tackling everything from renewable energy innovations to carbon capture technology. By focusing on sustainability, they’re not only helping the environment but also attracting eco-conscious investors and consumers.</p>
+
+    <h2 class="reveal text-2xl font-bold text-blue-700 mt-10">5. Startups in Web3 and the Metaverse</h2>
+    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" alt="Web3 Metaverse" class="rounded-xl shadow-lg my-4 w-full object-cover max-h-72">
+    <p class="reveal">Web3 startups are experimenting with decentralized applications, NFTs, and immersive metaverse platforms. While the hype around these technologies has had ups and downs, 2025 is seeing more practical use cases emerge, from virtual learning environments to decentralized identity management. These startups are shaping how people will interact in the digital world.</p>
+
+    <h2 class="reveal text-2xl font-bold text-blue-700 mt-10">6. The Power of Collaboration and Global Reach</h2>
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Collaboration" class="rounded-xl shadow-lg my-4 w-full object-cover max-h-72">
+    <p class="reveal">Unlike in the past, startups today are not limited by geography. With remote work and cloud infrastructure, a startup in Bangalore can collaborate seamlessly with partners in San Francisco or Berlin. This global reach allows them to scale faster, test new markets quickly, and attract international investors.</p>
+
+    <h2 class="reveal text-2xl font-bold text-blue-700 mt-10">7. Why Rising Startups Matter</h2>
+    <img src="https://images.unsplash.com/photo-1547658719-4c9ef3f9f755?auto=format&fit=crop&w=800&q=80" alt="Why Startups Matter" class="rounded-xl shadow-lg my-4 w-full object-cover max-h-72">
+    <p class="reveal">These startups matter because they are often willing to take risks that larger companies shy away from. They bring fresh perspectives, agility, and the freedom to innovate without legacy systems holding them back. The success stories of today’s rising startups could easily become tomorrow’s unicorns or even industry leaders.</p>
+
+    <div class="my-8 rounded-2xl bg-blue-100 border-l-8 border-blue-400 p-6 shadow-lg">
+      <p class="text-lg font-bold text-blue-800 mb-2">Final Thought</p>
+      <p class="text-blue-700">The story of rising tech startups is one of creativity, resilience, and disruption. In 2025, these companies are not just surviving—they’re redefining industries and building the future. Whether it’s through AI, fintech, healthtech, or sustainability, their innovations are shaping a world that is smarter, faster, and more connected than ever before.</p>
+    </div>
+
+    <div class="reveal mt-10 flex flex-wrap items-center gap-3">
+      <button id="copyLink" class="px-4 py-2 rounded-xl bg-yellow-400 text-blue-900 font-bold hover:bg-yellow-500 transition">Copy link</button>
+    </div>
+  </article>
+
+      <!-- Sidebar -->
+  <aside class="lg:col-span-4 space-y-6 mt-10 lg:mt-0">
+        <!-- Card: Table of Contents -->
+  <div id="toc" class="reveal p-5 rounded-2xl border border-black/5 bg-white/60 backdrop-blur">
+          <h4 class="font-semibold mb-3">On this page</h4>
+          <nav id="tocList" class="text-sm space-y-2"></nav>
+        </div>
+
+        <!-- Card: About the author -->
+  <div class="reveal p-5 rounded-2xl border border-black/5">
+          <div class="flex items-center gap-3">
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQHZOm-1zQkN0w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1728660253334?e=2147483647&v=beta&t=rdpNQZt3HDb_Mksn5mN8aBAmCjOWA0VyohqZw17_Nbc" class="w-12 h-12 rounded-full object-cover" alt="Author" />
+            <div>
+              <div class="font-semibold">Neeraj Kumhar</div>
+              <div class="text-xs text-gray-500">Designer & Full Stack Developer </div>
+            </div>
+          </div>
+          <p class="text-sm mt-3 text-gray-600">I design joyful, accessible experiences. When I’m not pushing pixels, I’m brewing coffee or sketching motion studies.</p>
+          <div class="mt-3 flex gap-2 text-sm">
+            <a class="px-3 py-1 rounded-xl border border-black/10" href="https://www.linkedin.com/in/neeraj-kumhar/">Follow</a>
+            <a class="px-3 py-1 rounded-xl bg-gray-900 text-white" href="https://neeraj-portfolio-ruddy.vercel.app/">Portfolio</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Related Posts -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 mt-16 mb-24">
+      <h3 class="reveal text-xl font-bold">Related posts</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        <a href="/blog1.html" class="reveal group block p-4 rounded-2xl border border-black/5 hover:shadow-soft transition">
+          <img class="rounded-xl h-40 w-full object-cover" src="https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/5773994/cover_image/retina_1708x683/0422_Ecommerce_microinteractions_Zara_Newsletter___blog-379f7513e986291515330966e576709a.png" alt="Post 1"/>
+          <div class="mt-3">
+            <div class="text-xs text-gray-500">UI/UX</div>
+            <div class="font-semibold group-hover:text-brand-600">Designing Delightful Web Experiences with Micro‑Interactions
+</div>
+          </div>
+        </a>
+        <a href="/blog2.html" class="reveal group block p-4 rounded-2xl border border-black/5 hover:shadow-soft transition">
+          <img class="rounded-xl h-40 w-full object-cover" src="https://senlainc.com/wp-content/webp-express/webp-images/uploads/%D0%9E%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0-2560%D1%851600.jpg.webp" alt="Post 2"/>
+          <div class="mt-3">
+            <div class="text-xs text-gray-500">Cybersecurity</div>
+            <div class="font-semibold group-hover:text-brand-600">Cybersecurity Best Practices</div>
+          </div>
+        </a>
+        <a href="/blog3.html    " class="reveal group block p-4 rounded-2xl border border-black/5 hover:shadow-soft transition">
+          <img class="rounded-xl h-40 w-full object-cover" src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=800&q=80" alt="Post 3"/>
+          <div class="mt-3">
+            <div class="text-xs text-gray-500">Remote Work</div>
+            <div class="font-semibold group-hover:text-brand-600">Future of Remote Work</div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-12 mt-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div>
+        <h3 class="text-2xl font-bold text-white mb-4">Vagwiin</h3>
+        <p>Laptop Service, Computer Service, Hardware Installation, IT Solution, Trusted service</p>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Services</h4>
+        <ul class="space-y-2">
+          <li>Laptop Repair</li>
+          <li>Computer Repair</li>
+          <li>Hardware Installation</li>
+          <li>IT Solution</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Company</h4>
+        <ul class="space-y-2">
+          <li>About Us</li>
+          <li>Features</li>
+          <li>Our Pricing</li>
+          <li>Latest News</li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 mt-8">© 2025 All Rights Reserved Vagwiin IT Solution</div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-6 px-4 py-2 rounded-xl bg-gray-900 text-white text-sm shadow-lg opacity-0 pointer-events-none transition"></div>
+
+  <!-- Scripts: animation, theme, toc, progress -->
+  <script>
+
+
+    // ===== Mobile menu =====
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // ===== Intersection-based reveal animations =====
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ===== Table of Contents (auto) =====
+    const tocList = document.getElementById('tocList');
+    const headings = [...document.querySelectorAll('article h2, article h3')];
+    const tocFrag = document.createDocumentFragment();
+    headings.forEach(h => {
+      const a = document.createElement('a');
+      a.href = `#${h.id}`;
+      a.textContent = h.textContent;
+      a.className = 'block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10';
+      tocFrag.appendChild(a);
+    });
+    tocList.appendChild(tocFrag);
+
+    // ===== Reading progress bar =====
+    const progress = document.getElementById('progress');
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const pct = Math.min(100, Math.max(0, (scrollTop / docHeight) * 100));
+      progress.style.width = pct + '%';
+    }
+    document.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // ===== Copy link =====
+    function toast(msg){
+      const el = document.getElementById('toast');
+      el.textContent = msg; el.classList.remove('opacity-0');
+      el.classList.add('opacity-100');
+      setTimeout(() => { el.classList.add('opacity-0'); el.classList.remove('opacity-100'); }, 1600);
+    }
+    document.getElementById('copyLink').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(location.href); toast('Link copied! 🔗'); }
+      catch { toast('Copy failed'); }
+    });
+
+    // ===== Year =====
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== Reduced motion respect =====
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('*').forEach(el => el.style.scrollBehavior = 'auto');
+    }
+  </script>
+</body>
+</html>

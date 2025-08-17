@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/ico" href="/img/favicon.ico">
+
+  <title>Computer Repair Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .animate-fade-up { animation: fadeUp 0.8s ease-out forwards; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .gradient-bg { background: linear-gradient(90deg, #e0e7ff 0%, #f0fdfa 100%); }
+    .card-glow { box-shadow: 0 8px 32px 0 rgba(56,189,248,0.15), 0 1.5px 6px 0 rgba(59,130,246,0.08); }
+    .pricing-pop { transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s; }
+    .pricing-pop:hover { transform: translateY(-8px) scale(1.04); box-shadow: 0 12px 36px 0 rgba(59,130,246,0.18), 0 2px 8px 0 rgba(59,130,246,0.10); }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+  <!-- Header -->
+<header class="w-full shadow-sm bg-white sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+    <!-- Logo -->
+<img src="img/logo.png" alt="Vagwiin Logo" class="h-12 w-auto">
+
+    <!-- Desktop Nav -->
+    <nav class="space-x-6 hidden md:flex">
+      <a href="/index.html" class="text-blue-600 font-semibold">Home</a>
+      <a href="/about.html" class="hover:text-blue-600">About</a>
+      <a href="/blog.html" class="hover:text-blue-600">Blog</a>
+      <a href="/services.html" class="hover:text-blue-600">Services</a>
+      <a href="/jobs.html" class="hover:text-blue-600">All Jobs</a>
+    </nav>
+
+    <!-- Contact Button (Desktop) -->
+    <a href="/contact.html" class="hidden md:inline-block ml-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+      Contact Us
+    </a>
+
+    <!-- Hamburger Button (Mobile) -->
+    <button id="menu-btn" class="md:hidden text-blue-700 focus:outline-none">
+      <!-- Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 space-y-4 bg-white border-t">
+    <a href="/index.html" class="block hover:text-blue-600">Home</a>
+    <a href="/about.html" class="block hover:text-blue-600">About</a>
+    <a href="/blog.html" class="block hover:text-blue-600">Blog</a>
+    <a href="/services.html" class="block hover:text-blue-600">Services</a>
+    <a href="/jobs.html" class="block hover:text-blue-600">All Jobs</a>
+    <a href="/contact.html" class="block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+      Contact Us
+    </a>
+  </div>
+</header>
+
+<script>
+  // Mobile Menu Toggle
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+
+  <!-- Hero Section -->
+  <section class="gradient-bg py-20">
+    <div class="max-w-6xl mx-auto px-6 text-center animate-fade-up">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-blue-700 mb-4 tracking-tight">Computer Repair Services</h2>
+      <p class="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mb-4">
+        Fast, reliable, and affordable computer repair solutions.<br class="hidden md:block"> We fix desktops, laptops, and custom PCs with guaranteed quality service.
+      </p>
+      <div class="flex justify-center mt-6">
+        <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Computer Repair Icon" class="h-20 w-20 drop-shadow-lg">
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Details -->
+  <section class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-14 items-center">
+    <!-- Image -->
+    <div class="animate-fade-up">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" 
+           alt="Computer Repair" class="rounded-3xl shadow-2xl border-4 border-blue-100">
+    </div>
+
+    <!-- Content -->
+    <div class="animate-fade-up">
+      <h3 class="text-3xl md:text-4xl font-bold mb-6 text-blue-700">What We Offer</h3>
+      <ul class="space-y-4 mb-8">
+        <li class="flex items-center gap-3 text-lg text-gray-700"><span class="inline-block bg-blue-100 text-blue-600 rounded-full p-2"><svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7' /></svg></span>Laptop and Desktop Hardware Repair</li>
+        <li class="flex items-center gap-3 text-lg text-gray-700"><span class="inline-block bg-blue-100 text-blue-600 rounded-full p-2"><svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7' /></svg></span>Software Installation & Troubleshooting</li>
+        <li class="flex items-center gap-3 text-lg text-gray-700"><span class="inline-block bg-blue-100 text-blue-600 rounded-full p-2"><svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7' /></svg></span>Virus & Malware Removal</li>
+        <li class="flex items-center gap-3 text-lg text-gray-700"><span class="inline-block bg-blue-100 text-blue-600 rounded-full p-2"><svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7' /></svg></span>Data Backup & Recovery</li>
+        <li class="flex items-center gap-3 text-lg text-gray-700"><span class="inline-block bg-blue-100 text-blue-600 rounded-full p-2"><svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7' /></svg></span>Custom PC Building & Upgrades</li>
+        <li class="flex items-center gap-3 text-lg text-gray-700"><span class="inline-block bg-blue-100 text-blue-600 rounded-full p-2"><svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7' /></svg></span>Networking & Wi-Fi Setup</li>
+      </ul>
+
+      <p class="text-gray-600 mb-8 text-lg">
+        Our certified technicians provide quick and efficient repair services. Whether it’s a broken 
+        screen, overheating laptop, or system crash – we’ve got you covered.
+      </p>
+
+      <a href="contact.html" 
+         class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold py-3 px-8 rounded-xl shadow-lg hover:from-blue-700 hover:to-cyan-600 transition text-lg">
+        Book a Repair Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="gradient-bg py-20">
+    <div class="max-w-6xl mx-auto px-6 text-center animate-fade-up">
+      <h3 class="text-3xl md:text-4xl font-bold mb-10 text-blue-700">Pricing</h3>
+      <div class="grid md:grid-cols-3 gap-10">
+        <!-- Basic -->
+        <div class="bg-white p-8 rounded-3xl card-glow pricing-pop">
+          <div class="flex justify-center mb-4">
+            <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" class="h-12 w-12" alt="Basic Repair">
+          </div>
+          <h4 class="text-xl font-bold mb-2 text-blue-600">Basic Repair</h4>
+          <p class="text-3xl font-extrabold text-blue-700 mb-4">₹499</p>
+          <ul class="text-gray-600 mb-6 space-y-2 text-base">
+            <li>Software Issues</li>
+            <li>Basic Troubleshooting</li>
+            <li>Free Diagnosis</li>
+          </ul>
+          <a href="contact.html" class="bg-blue-600 text-white py-2 px-8 rounded-lg hover:bg-blue-700 transition font-semibold">Book Now</a>
+        </div>
+        <!-- Standard -->
+        <div class="bg-white p-8 rounded-3xl card-glow pricing-pop border-2 border-blue-600 scale-105 z-10">
+          <div class="flex justify-center mb-4">
+            <img src="https://cdn-icons-png.flaticon.com/512/190/190406.png" class="h-12 w-12" alt="Standard Repair">
+          </div>
+          <h4 class="text-xl font-bold mb-2 text-blue-600">Standard Repair</h4>
+          <p class="text-3xl font-extrabold text-blue-700 mb-4">₹999</p>
+          <ul class="text-gray-600 mb-6 space-y-2 text-base">
+            <li>Hardware + Software Fix</li>
+            <li>Virus Removal</li>
+            <li>1 Month Warranty</li>
+          </ul>
+          <a href="contact.html" class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-2 px-8 rounded-lg hover:from-blue-700 hover:to-cyan-600 transition font-semibold">Book Now</a>
+        </div>
+        <!-- Premium -->
+        <div class="bg-white p-8 rounded-3xl card-glow pricing-pop">
+          <div class="flex justify-center mb-4">
+            <img src="https://cdn-icons-png.flaticon.com/512/190/190422.png" class="h-12 w-12" alt="Premium Repair">
+          </div>
+          <h4 class="text-xl font-bold mb-2 text-blue-600">Premium Repair</h4>
+          <p class="text-3xl font-extrabold text-blue-700 mb-4">₹1499</p>
+          <ul class="text-gray-600 mb-6 space-y-2 text-base">
+            <li>Full PC Overhaul</li>
+            <li>Data Recovery</li>
+            <li>3 Months Warranty</li>
+          </ul>
+          <a href="contact.html" class="bg-blue-600 text-white py-2 px-8 rounded-lg hover:bg-blue-700 transition font-semibold">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-12">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl font-bold text-white mb-4">Vagwiin</h3>
+        <p>Laptop repair, computer repair, hardware replacement, IT solutions in Jodhpur.</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold text-white mb-4">Services</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-white">Laptop Repair</a></li>
+          <li><a href="#" class="hover:text-white">Data Recovery</a></li>
+          <li><a href="#" class="hover:text-white">Virus Removal</a></li>
+          <li><a href="#" class="hover:text-white">IT Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold text-white mb-4">Company</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-white">About Us</a></li>
+          <li><a href="#" class="hover:text-white">Careers</a></li>
+          <li><a href="#" class="hover:text-white">Contact</a></li>
+          <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 mt-8">© 2025 Vagwiin IT Services. All Rights Reserved.</div>
+  </footer>
+
+</body>
+</html>
