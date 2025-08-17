@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogs - Vagwiin</title>
+    <link rel="icon" type="image/ico" href="/img/favicon.ico">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Animate on Scroll (AOS) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Navbar -->
+<header class="w-full shadow-sm bg-white sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+    <!-- Logo -->
+<img src="img/logo.png" alt="Vagwiin Logo" class="h-12 w-auto">
+
+    <!-- Desktop Nav -->
+    <nav class="space-x-6 hidden md:flex">
+      <a href="/index.html" class="hover:text-blue-600">Home</a>
+      <a href="/about.html" class="hover:text-blue-600">About</a>
+      <a href="/blog.html" class="text-blue-600 font-semibold">Blog</a>
+      <a href="/services.html" class="hover:text-blue-600">Services</a>
+      <a href="/jobs.html" class="hover:text-blue-600">All Jobs</a>
+    </nav>
+
+    <!-- Contact Button (Desktop) -->
+    <a href="/contact.html" class="hidden md:inline-block ml-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+      Contact Us
+    </a>
+
+    <!-- Hamburger Button (Mobile) -->
+    <button id="menu-btn" class="md:hidden text-blue-700 focus:outline-none">
+      <!-- Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 space-y-4 bg-white border-t">
+    <a href="/index.html" class="block text-blue-600 font-semibold">Home</a>
+    <a href="/about.html" class="block hover:text-blue-600">About</a>
+    <a href="/blog.html" class="block hover:text-blue-600">Blog</a>
+    <a href="/services.html" class="block hover:text-blue-600">Services</a>
+    <a href="/jobs.html" class="block hover:text-blue-600">All Jobs</a>
+    <a href="/contact.html" class="block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+      Contact Us
+    </a>
+  </div>
+</header>
+
+<script>
+  // Mobile Menu Toggle
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+
+  <!-- Hero Section -->
+  <section class="bg-blue-50 py-16">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-4">Our Blog</h2>
+      <p class="text-gray-600">Latest Articles & Insights</p>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="py-16 max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-10">
+
+      <!-- Blog Card 1 -->
+      <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden" data-aos="fade-up">
+        <img src="https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/5773994/cover_image/retina_1708x683/0422_Ecommerce_microinteractions_Zara_Newsletter___blog-379f7513e986291515330966e576709a.png" alt="Tech Trends" class="w-full h-52 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3">Designing Delightful Web Experiences with Micro‑Interactions</h3>
+          <p class="text-gray-600 mb-4">Explore the latest technology trends that are shaping businesses worldwide, from AI to cloud computing.</p>
+          <a href="/blog1.html" class="text-blue-600 font-semibold hover:underline">Read More →</a>
+        </div>
+      </div>
+
+      <!-- Blog Card 2 -->
+      <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://senlainc.com/wp-content/webp-express/webp-images/uploads/%D0%9E%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0-2560%D1%851600.jpg.webp" alt="Cybersecurity" class="w-full h-52 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3">Cybersecurity Best Practices</h3>
+          <p class="text-gray-600 mb-4">Learn how to protect your personal and business data against increasing cyber threats in 2025.</p>
+          <a href="/blog2.html" class="text-blue-600 font-semibold hover:underline">Read More →</a>
+        </div>
+      </div>
+
+      <!-- Blog Card 3 -->
+      <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=800&q=80" alt="Remote Work" class="w-full h-52 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3">Future of Remote Work</h3>
+          <p class="text-gray-600 mb-4">Discover how businesses are adapting to hybrid and remote work models with new tools and strategies.</p>
+          <a href="/blog3.html" class="text-blue-600 font-semibold hover:underline">Read More →</a>
+        </div>
+      </div>
+
+      <!-- Blog Card 4 -->
+      <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80" alt="Cloud Computing" class="w-full h-52 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3">Cloud Computing in 2025</h3>
+          <p class="text-gray-600 mb-4">A deep dive into the future of cloud services and how companies leverage them for growth.</p>
+          <a href="/blog4.html" class="text-blue-600 font-semibold hover:underline">Read More →</a>
+        </div>
+      </div>
+
+      <!-- Blog Card 5 -->
+      <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+        <img src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?w=800&q=80" alt="AI Innovation" class="w-full h-52 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3">AI Innovations</h3>
+          <p class="text-gray-600 mb-4">Artificial intelligence is revolutionizing industries. Let’s explore the breakthroughs in 2025.</p>
+          <a href="/blog5.html" class="text-blue-600 font-semibold hover:underline">Read More →</a>
+        </div>
+      </div>
+
+      <!-- Blog Card 6 -->
+      <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden" data-aos="fade-up" data-aos-delay="500">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt="Tech Startups" class="w-full h-52 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3">Rising Tech Startups</h3>
+          <p class="text-gray-600 mb-4">Meet the startups that are disrupting industries and reshaping the future of technology.</p>
+          <a href="/blog6.html" class="text-blue-600 font-semibold hover:underline">Read More →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== New Sections Below ===== -->
+
+  <!-- Categories Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-6">Explore by Categories</h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        <span class="px-6 py-2 bg-blue-100 text-blue-600 rounded-full font-semibold cursor-pointer hover:bg-blue-200">AI</span>
+        <span class="px-6 py-2 bg-green-100 text-green-600 rounded-full font-semibold cursor-pointer hover:bg-green-200">Cloud</span>
+        <span class="px-6 py-2 bg-purple-100 text-purple-600 rounded-full font-semibold cursor-pointer hover:bg-purple-200">Security</span>
+        <span class="px-6 py-2 bg-pink-100 text-pink-600 rounded-full font-semibold cursor-pointer hover:bg-pink-200">Startups</span>
+        <span class="px-6 py-2 bg-yellow-100 text-yellow-600 rounded-full font-semibold cursor-pointer hover:bg-yellow-200">Innovation</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Blog Section -->
+  <section class="py-16 max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-10 items-center" data-aos="fade-up">
+      <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=1200&q=80" alt="Featured" class="rounded-2xl shadow-lg">
+      <div>
+        <h2 class="text-3xl font-bold mb-4">🌟 Featured Article: The Rise of AI in Business</h2>
+        <p class="text-gray-600 mb-6">Artificial Intelligence is no longer the future—it’s the present. Discover how AI is transforming industries, improving productivity, and creating new opportunities in the digital age.</p>
+        <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">Read Full Story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup -->
+  <section class="bg-blue-600 text-white py-16 text-center">
+    <h2 class="text-3xl font-bold mb-4">📩 Stay Updated</h2>
+    <p class="mb-6 text-blue-100">Subscribe to our newsletter to receive the latest tech updates directly in your inbox.</p>
+    <form class="max-w-xl mx-auto flex gap-3">
+      <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg text-gray-800" required>
+      <button type="submit" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-16 max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-10">What Our Readers Say</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded-2xl shadow" data-aos="fade-up">
+        <p class="text-gray-600 mb-4">“Vagwiin’s blog keeps me ahead of the latest IT trends. Highly recommended!”</p>
+        <h4 class="font-bold text-blue-600">– Sarah J.</h4>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow" data-aos="fade-up" data-aos-delay="100">
+        <p class="text-gray-600 mb-4">“Clear, informative, and engaging content. I always look forward to new posts.”</p>
+        <h4 class="font-bold text-blue-600">– Mark T.</h4>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow" data-aos="fade-up" data-aos-delay="200">
+        <p class="text-gray-600 mb-4">“The best resource for learning about IT solutions and future technologies.”</p>
+        <h4 class="font-bold text-blue-600">– Priya K.</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="bg-gray-100 py-16 text-center">
+    <h2 class="text-3xl font-bold mb-4">🚀 Ready to Take Your Business Forward?</h2>
+    <p class="text-gray-600 mb-6">Explore our IT services and discover how Vagwiin can empower your business with technology solutions.</p>
+    <a href="services.html" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">View Our Services</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-12 mt-10">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10">
+      <div>
+        <h3 class="text-2xl font-bold text-white mb-4">Vagwiin</h3>
+        <p>Laptop Service, Computer Service, Hardware Installation, IT Solution, Trusted service</p>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Services</h4>
+        <ul class="space-y-2">
+          <li>Laptop Repair</li>
+          <li>Computer Repair</li>
+          <li>Hardware Installation</li>
+          <li>IT Solution</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Company</h4>
+        <ul class="space-y-2">
+          <li>About Us</li>
+          <li>Features</li>
+          <li>Our Pricing</li>
+          <li>Latest News</li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 mt-8">© 2025 All Rights Reserved Vagwiin IT Solution</div>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+</body>
+</html>
